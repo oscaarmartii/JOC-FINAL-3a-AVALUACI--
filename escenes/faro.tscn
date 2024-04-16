@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=3 uid="uid://bwwn0j7i525r8"]
+
+[ext_resource type="Texture2D" uid="uid://u20i2tmocjyl" path="res://imatges/0x72_16x16DungeonTileset.v5/items/torch_5.png" id="1_bsr8w"]
+[ext_resource type="Texture2D" uid="uid://bsjcwqk281bym" path="res://imatges/0x72_16x16DungeonTileset.v5/items/torch_8.png" id="2_744ps"]
+[ext_resource type="Texture2D" uid="uid://8ys7tntfyyp3" path="res://imatges/0x72_16x16DungeonTileset.v5/items/torch_1.png" id="3_ocuou"]
+[ext_resource type="Texture2D" uid="uid://c6rkbcxgf8xpo" path="res://imatges/0x72_16x16DungeonTileset.v5/items/torch_6.png" id="4_sp12f"]
+[ext_resource type="Texture2D" uid="uid://do2gg68x21ios" path="res://imatges/0x72_16x16DungeonTileset.v5/items/torch_3.png" id="5_6tn7a"]
+[ext_resource type="Texture2D" uid="uid://b6ginb2138o5o" path="res://imatges/0x72_16x16DungeonTileset.v5/items/torch_2.png" id="6_c16hv"]
+[ext_resource type="Texture2D" uid="uid://2ugx5325auqj" path="res://imatges/0x72_16x16DungeonTileset.v5/items/torch_7.png" id="7_3jdnt"]
+[ext_resource type="Texture2D" uid="uid://cppn6gcaj7hp7" path="res://imatges/0x72_16x16DungeonTileset.v5/items/torch_4.png" id="8_q2d2y"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_awxns"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bsr8w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_744ps")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ocuou")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sp12f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6tn7a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_c16hv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3jdnt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_q2d2y")
+}],
+"loop": true,
+"name": &"vela",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_7stpu"]
+script/source = "extends AnimatedSprite2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[node name="faro" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_awxns")
+animation = &"vela"
+autoplay = "vela"
+frame_progress = 0.397341
+script = SubResource("GDScript_7stpu")
