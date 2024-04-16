@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://dws4swtbmqput"]
+[gd_scene load_steps=2 format=3 uid="uid://dws4swtbmqput"]
+
+[ext_resource type="PackedScene" uid="uid://cxm54vnitf3a6" path="res://escenes/tilemap.tscn" id="1_qxbpa"]
 
 [node name="PANTALLA INICI" type="Control"]
 layout_mode = 3
@@ -7,3 +9,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TileMap" parent="." instance=ExtResource("1_qxbpa")]
