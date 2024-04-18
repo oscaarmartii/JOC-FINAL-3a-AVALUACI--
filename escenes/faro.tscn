@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bwwn0j7i525r8"]
+[gd_scene load_steps=12 format=3 uid="uid://bwwn0j7i525r8"]
 
 [ext_resource type="Texture2D" uid="uid://u20i2tmocjyl" path="res://imatges/0x72_16x16DungeonTileset.v5/items/torch_5.png" id="1_bsr8w"]
 [ext_resource type="Texture2D" uid="uid://bsjcwqk281bym" path="res://imatges/0x72_16x16DungeonTileset.v5/items/torch_8.png" id="2_744ps"]
@@ -41,19 +41,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_7stpu"]
-script/source = "extends AnimatedSprite2D
+[sub_resource type="Gradient" id="Gradient_evtod"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-"
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bthhn"]
+gradient = SubResource("Gradient_evtod")
+fill = 1
+fill_from = Vector2(0.5, 0.522936)
+fill_to = Vector2(0.536697, 0.990826)
 
 [node name="faro" type="Node2D"]
 
@@ -63,4 +58,8 @@ sprite_frames = SubResource("SpriteFrames_awxns")
 animation = &"vela"
 autoplay = "vela"
 frame_progress = 0.397341
-script = SubResource("GDScript_7stpu")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-1.90735e-06, 1.90735e-06)
+scale = Vector2(1.5, 1.625)
+texture = SubResource("GradientTexture2D_bthhn")
