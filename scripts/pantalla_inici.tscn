@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dws4swtbmqput"]
+[gd_scene load_steps=7 format=3 uid="uid://dws4swtbmqput"]
 
+[ext_resource type="Script" path="res://scripts/pantalla_inici.gd" id="1_lnhfd"]
 [ext_resource type="PackedScene" uid="uid://cxm54vnitf3a6" path="res://escenes/tilemap.tscn" id="1_qxbpa"]
 [ext_resource type="Texture2D" uid="uid://dteaw5w3jht6r" path="res://NETHER/nether.jpg" id="2_dqmvm"]
 [ext_resource type="Texture2D" uid="uid://bxlkbk0bb27g1" path="res://imatges/imatges hub/Double/Border/panel-border-002.png" id="2_qfaco"]
+[ext_resource type="Script" path="res://scripts/Area2D.gd" id="5_enw11"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4ybm"]
+size = Vector2(1784, 184)
 
 [node name="PANTALLA INICI" type="Control"]
 layout_mode = 3
@@ -14,6 +19,7 @@ offset_right = 2.0
 offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_lnhfd")
 
 [node name="TileMap" parent="." instance=ExtResource("1_qxbpa")]
 texture_filter = 1
@@ -35,6 +41,70 @@ texture = ExtResource("2_dqmvm")
 region_enabled = true
 region_rect = Rect2(70.2914, 70.4546, 458.689, 460.15)
 
+[node name="Nether3" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(525, 159)
+scale = Vector2(0.399563, 0.399563)
+texture = ExtResource("2_dqmvm")
+region_enabled = true
+region_rect = Rect2(70.2914, 70.4546, 458.689, 460.15)
+
+[node name="Nether4" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(890.5, 158.899)
+scale = Vector2(0.399563, 0.399563)
+texture = ExtResource("2_dqmvm")
+region_enabled = true
+region_rect = Rect2(70.2914, 70.4546, 458.689, 460.15)
+
+[node name="Nether5" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(707.5, 158.899)
+scale = Vector2(0.399563, 0.399563)
+texture = ExtResource("2_dqmvm")
+region_enabled = true
+region_rect = Rect2(70.2914, 70.4546, 458.689, 460.15)
+
+[node name="Nether6" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1073.5, 158.899)
+scale = Vector2(0.399563, 0.399563)
+texture = ExtResource("2_dqmvm")
+region_enabled = true
+region_rect = Rect2(70.2914, 70.4546, 458.689, 460.15)
+
+[node name="Nether7" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1256.5, 158.899)
+scale = Vector2(0.399563, 0.399563)
+texture = ExtResource("2_dqmvm")
+region_enabled = true
+region_rect = Rect2(70.2914, 70.4546, 458.689, 460.15)
+
+[node name="Nether8" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1439, 159)
+scale = Vector2(0.399563, 0.399563)
+texture = ExtResource("2_dqmvm")
+region_enabled = true
+region_rect = Rect2(70.2914, 70.4546, 458.689, 460.15)
+
+[node name="Nether9" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1620, 159)
+scale = Vector2(0.399563, 0.399563)
+texture = ExtResource("2_dqmvm")
+region_enabled = true
+region_rect = Rect2(70.2914, 70.4546, 458.689, 460.15)
+
+[node name="Nether10" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1781, 158.899)
+scale = Vector2(0.399563, 0.399563)
+texture = ExtResource("2_dqmvm")
+region_enabled = true
+region_rect = Rect2(70.2914, 70.4546, 358.709, 460.15)
+
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 texture_filter = 1
 layout_mode = 0
@@ -47,3 +117,13 @@ patch_margin_left = 24
 patch_margin_top = 24
 patch_margin_right = 24
 patch_margin_bottom = 24
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(64, 64)
+script = ExtResource("5_enw11")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(896, 96)
+shape = SubResource("RectangleShape2D_x4ybm")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
