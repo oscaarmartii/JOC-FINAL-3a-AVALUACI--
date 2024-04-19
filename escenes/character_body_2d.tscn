@@ -431,12 +431,10 @@ script = ExtResource("1_a8xdi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -9)
+position = Vector2(4, -13)
 sprite_frames = SubResource("SpriteFrames_8cb5n")
-animation = &"crouch"
-frame = 2
-frame_progress = 0.341526
+animation = &"taking_damage"
+frame_progress = 0.849008
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-visible = false
 polygon = PackedVector2Array(-9, -1, -9, -3, -8, -3, -8, -4, -7, -4, -7, -5, -6, -5, -6, -8, -6, -12, -6, -14, -4, -14, -4, -16, 0, -16, 1, -16, 1, -15, 2, -15, 2, -14, 4, -14, 4, -13, 5, -12, 6, -11, 6, -10, 6, -9, 5, -8, 4, -8, 3, -8, 3, -6, 3, -5, 4, -4, 4, -3, 4, -2, 6, -2, 9, -2, 10, -1, 11, -1, 12, 1, 12, 6, 11, 8, 9, 8, 9, 9, 5, 9, 5, 13, 4, 13, 4, 15, 6, 15, 6, 17, 1, 17, 1, 11, -3, 11, -3, 13, -4, 13, -4, 15, -5, 15, -5, 17, -9, 17, -9, 14, -8, 14, -8, 12, -7, 12, -7, 9, -9, 9, -9, 8, -10, 8, -10, 0, -10, -1)
