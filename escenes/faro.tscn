@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bwwn0j7i525r8"]
+[gd_scene load_steps=16 format=3 uid="uid://bwwn0j7i525r8"]
 
 [ext_resource type="Texture2D" uid="uid://u20i2tmocjyl" path="res://imatges/0x72_16x16DungeonTileset.v5/items/torch_5.png" id="1_bsr8w"]
+[ext_resource type="Script" path="res://scripts/faro.gd" id="1_m80xy"]
 [ext_resource type="Texture2D" uid="uid://bsjcwqk281bym" path="res://imatges/0x72_16x16DungeonTileset.v5/items/torch_8.png" id="2_744ps"]
 [ext_resource type="Texture2D" uid="uid://8ys7tntfyyp3" path="res://imatges/0x72_16x16DungeonTileset.v5/items/torch_1.png" id="3_ocuou"]
 [ext_resource type="Texture2D" uid="uid://c6rkbcxgf8xpo" path="res://imatges/0x72_16x16DungeonTileset.v5/items/torch_6.png" id="4_sp12f"]
@@ -8,6 +9,51 @@
 [ext_resource type="Texture2D" uid="uid://b6ginb2138o5o" path="res://imatges/0x72_16x16DungeonTileset.v5/items/torch_2.png" id="6_c16hv"]
 [ext_resource type="Texture2D" uid="uid://2ugx5325auqj" path="res://imatges/0x72_16x16DungeonTileset.v5/items/torch_7.png" id="7_3jdnt"]
 [ext_resource type="Texture2D" uid="uid://cppn6gcaj7hp7" path="res://imatges/0x72_16x16DungeonTileset.v5/items/torch_4.png" id="8_q2d2y"]
+
+[sub_resource type="Animation" id="Animation_as2nf"]
+resource_name = "faro"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1.5, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2.5, -0.25, 0, 0.25, 0, 1.5, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+}
+
+[sub_resource type="Animation" id="Animation_4ljy3"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_03j1k"]
+_data = {
+"RESET": SubResource("Animation_4ljy3"),
+"faro": SubResource("Animation_as2nf")
+}
+
+[sub_resource type="Gradient" id="Gradient_evtod"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bthhn"]
+gradient = SubResource("Gradient_evtod")
+fill = 1
+fill_from = Vector2(0.5, 0.522936)
+fill_to = Vector2(0.536697, 0.990826)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_awxns"]
 animations = [{
@@ -41,16 +87,19 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_evtod"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_bthhn"]
-gradient = SubResource("Gradient_evtod")
-fill = 1
-fill_from = Vector2(0.5, 0.522936)
-fill_to = Vector2(0.536697, 0.990826)
-
 [node name="faro" type="Node2D"]
+script = ExtResource("1_m80xy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_03j1k")
+}
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-1.90735e-06, 1.90735e-06)
+scale = Vector2(1.5, 1.625)
+energy = 0.0
+texture = SubResource("GradientTexture2D_bthhn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -58,8 +107,3 @@ sprite_frames = SubResource("SpriteFrames_awxns")
 animation = &"vela"
 autoplay = "vela"
 frame_progress = 0.397341
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(-1.90735e-06, 1.90735e-06)
-scale = Vector2(1.5, 1.625)
-texture = SubResource("GradientTexture2D_bthhn")
