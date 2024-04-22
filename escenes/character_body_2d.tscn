@@ -1,7 +1,75 @@
 [gd_scene load_steps=59 format=3 uid="uid://6qkbeev6mup0"]
 
-[ext_resource type="Script" path="res://scripts/character_body_2d.gd" id="1_a8xdi"]
 [ext_resource type="Texture2D" uid="uid://nwqlptqe4at5" path="res://char_red_1.png" id="2_t5o5m"]
+
+[sub_resource type="GDScript" id="GDScript_ulw1k"]
+script/source = "extends CharacterBody2D
+
+const speed = 100
+var current_dir = \"none\"
+
+	
+func player_movement():
+	
+	if Input.is_action_pressed(\"ui_right\"):
+		current_dir = \"right\"
+		play_anim(1)
+		velocity.x = speed
+		velocity.y = 0
+	elif Input.is_action_pressed(\"ui_left\"):
+		current_dir = \"left\"
+		play_anim(1)
+		velocity.x = -speed
+		velocity.y = 0
+	elif Input.is_action_pressed(\"ui_down\"):
+		current_dir = \"down\"
+		play_anim(1)
+		velocity.y = speed
+		velocity.x = 0
+	elif Input.is_action_pressed(\"ui_up\"):
+		current_dir = \"up\"
+		play_anim(1)
+		velocity.y = -speed
+		velocity.x = 0
+	else:
+		play_anim(0)
+		velocity.x = 0
+		velocity.y = 0
+		
+	move_and_slide()
+	
+func play_anim(movement):
+	var dir = current_dir
+	var anim = $AnimatedSprite2D
+	
+	if dir == \"right\":
+		anim.flip_h = false
+		if movement == 1:
+			anim.play(\"running\")
+		elif movement == 0:
+			anim.play(\"idle\")
+	if dir == \"left\":
+		anim.flip_h = true
+		if movement == 1:
+			anim.play(\"running\")
+		elif movement == 0:
+			anim.play(\"idle\")
+			
+	if dir == \"down\":
+		anim.flip_h = true
+		if movement == 1:
+			anim.play(\"running\")
+		elif movement == 0:
+			anim.play(\"idle\")
+	if dir == \"up\":
+		anim.flip_h = true
+		if movement == 1:
+			anim.play(\"running\")
+		elif movement == 0:
+			anim.play(\"idle\")
+	
+
+"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fss2u"]
 atlas = ExtResource("2_t5o5m")
@@ -427,14 +495,17 @@ animations = [{
 }]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
-script = ExtResource("1_a8xdi")
+script = SubResource("GDScript_ulw1k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(4, -13)
+position = Vector2(154, 102)
 sprite_frames = SubResource("SpriteFrames_8cb5n")
-animation = &"taking_damage"
-frame_progress = 0.849008
+animation = &"running"
+frame = 7
+frame_progress = 0.364239
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2(153, 102)
 polygon = PackedVector2Array(-9, -1, -9, -3, -8, -3, -8, -4, -7, -4, -7, -5, -6, -5, -6, -8, -6, -12, -6, -14, -4, -14, -4, -16, 0, -16, 1, -16, 1, -15, 2, -15, 2, -14, 4, -14, 4, -13, 5, -12, 6, -11, 6, -10, 6, -9, 5, -8, 4, -8, 3, -8, 3, -6, 3, -5, 4, -4, 4, -3, 4, -2, 6, -2, 9, -2, 10, -1, 11, -1, 12, 1, 12, 6, 11, 8, 9, 8, 9, 9, 5, 9, 5, 13, 4, 13, 4, 15, 6, 15, 6, 17, 1, 17, 1, 11, -3, 11, -3, 13, -4, 13, -4, 15, -5, 15, -5, 17, -9, 17, -9, 14, -8, 14, -8, 12, -7, 12, -7, 9, -9, 9, -9, 8, -10, 8, -10, 0, -10, -1)
