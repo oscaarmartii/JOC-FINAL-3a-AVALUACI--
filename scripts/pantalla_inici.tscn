@@ -132,6 +132,8 @@ shape = SubResource("RectangleShape2D_x4ybm")
 position = Vector2(1037, 895)
 scale = Vector2(5, 5)
 
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+
 [node name="faro" parent="." instance=ExtResource("7_jcpfi")]
 position = Vector2(736, 994)
 scale = Vector2(3, 3)
