@@ -468,6 +468,7 @@ animations = [{
 }]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+scale = Vector2(0.8, 0.8)
 script = SubResource("GDScript_ulw1k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
