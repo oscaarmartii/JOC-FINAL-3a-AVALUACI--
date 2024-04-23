@@ -1,0 +1,65 @@
+[gd_scene load_steps=14 format=3 uid="uid://pc3migbm5x5c"]
+
+[ext_resource type="Texture2D" uid="uid://byrkrm0vly7nf" path="res://balas/Lasers/laserGreen02.png" id="1_hlm4j"]
+[ext_resource type="Texture2D" uid="uid://b2xmhr2h8ewte" path="res://balas/Lasers/laserGreen03.png" id="2_pxiu8"]
+[ext_resource type="Texture2D" uid="uid://bcouj0ywaa11h" path="res://balas/Lasers/laserGreen05.png" id="3_k3k1e"]
+[ext_resource type="Texture2D" uid="uid://cvw1gv2gd7cgs" path="res://balas/Lasers/laserGreen04.png" id="4_u3nk2"]
+[ext_resource type="Texture2D" uid="uid://cxhdvcnu6splg" path="res://balas/Lasers/laserGreen06.png" id="5_jt1wx"]
+[ext_resource type="Texture2D" uid="uid://wlhn8m26tngu" path="res://balas/Lasers/laserGreen07.png" id="6_sxy8f"]
+[ext_resource type="Texture2D" uid="uid://c0l0beft2r475" path="res://balas/Lasers/laserGreen08.png" id="7_nuyvb"]
+[ext_resource type="Texture2D" uid="uid://dh5lbbnbv1oot" path="res://balas/Lasers/laserGreen10.png" id="8_y7viu"]
+[ext_resource type="Texture2D" uid="uid://jmn4q47ujh7g" path="res://balas/Lasers/laserGreen09.png" id="9_y001t"]
+[ext_resource type="Texture2D" uid="uid://bcljont314nvs" path="res://balas/Lasers/laserGreen11.png" id="10_qooga"]
+[ext_resource type="Texture2D" uid="uid://dua3k10tgg86e" path="res://balas/Lasers/laserGreen12.png" id="11_kl3qo"]
+[ext_resource type="Texture2D" uid="uid://dn2w3qpvefbv" path="res://balas/Lasers/laserGreen13.png" id="12_res3r"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tnqj7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hlm4j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_pxiu8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_k3k1e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_u3nk2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jt1wx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_sxy8f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_nuyvb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_y7viu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_y001t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qooga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_kl3qo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_res3r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="balas" type="Node2D"]
+rotation = 4.71239
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tnqj7")
+frame_progress = 0.575405
