@@ -10,6 +10,20 @@
 [ext_resource type="Texture2D" uid="uid://2ugx5325auqj" path="res://imatges/0x72_16x16DungeonTileset.v5/items/torch_7.png" id="7_3jdnt"]
 [ext_resource type="Texture2D" uid="uid://cppn6gcaj7hp7" path="res://imatges/0x72_16x16DungeonTileset.v5/items/torch_4.png" id="8_q2d2y"]
 
+[sub_resource type="Animation" id="Animation_4ljy3"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="Animation" id="Animation_as2nf"]
 resource_name = "faro"
 length = 10.0
@@ -24,20 +38,6 @@ tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1.5, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2.5, -0.25, 0, 0.25, 0, 1.5, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-}
-
-[sub_resource type="Animation" id="Animation_4ljy3"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PointLight2D:energy")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_03j1k"]
