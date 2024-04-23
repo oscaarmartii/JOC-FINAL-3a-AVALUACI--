@@ -8,65 +8,38 @@ script/source = "extends CharacterBody2D
 const speed = 100
 var current_dir = \"none\"
 
-	
+
+func _process(delta):
+	player_movement()
+
 func player_movement():
-	
+	velocity = Vector2.ZERO
 	if Input.is_action_pressed(\"ui_right\"):
-		current_dir = \"right\"
-		play_anim(1)
-		velocity.x = speed
-		velocity.y = 0
-	elif Input.is_action_pressed(\"ui_left\"):
-		current_dir = \"left\"
-		play_anim(1)
-		velocity.x = -speed
-		velocity.y = 0
-	elif Input.is_action_pressed(\"ui_down\"):
-		current_dir = \"down\"
-		play_anim(1)
-		velocity.y = speed
-		velocity.x = 0
-	elif Input.is_action_pressed(\"ui_up\"):
-		current_dir = \"up\"
-		play_anim(1)
-		velocity.y = -speed
-		velocity.x = 0
-	else:
-		play_anim(0)
-		velocity.x = 0
-		velocity.y = 0
-		
-	move_and_slide()
+		velocity += Vector2.RIGHT * speed
+	if Input.is_action_pressed(\"ui_left\"):
+		velocity += Vector2.LEFT * speed
+	if Input.is_action_pressed(\"ui_down\"):
+		velocity += Vector2.DOWN * speed
+	if Input.is_action_pressed(\"ui_up\"):
+		velocity += Vector2.UP * speed
 	
-func play_anim(movement):
+	move_and_slide()
+	play_anim()
+	
+func play_anim():
 	var dir = current_dir
 	var anim = $AnimatedSprite2D
-	
-	if dir == \"right\":
-		anim.flip_h = false
-		if movement == 1:
-			anim.play(\"running\")
-		elif movement == 0:
-			anim.play(\"idle\")
-	if dir == \"left\":
-		anim.flip_h = true
-		if movement == 1:
-			anim.play(\"running\")
-		elif movement == 0:
-			anim.play(\"idle\")
+	if velocity.length() > 0:
+		anim.play(\"running\")
+	else:
+		anim.play(\"idle\")
 			
-	if dir == \"down\":
+			
+	if velocity.x > 0:
+		anim.flip_h = false
+	if velocity.x < 0:
 		anim.flip_h = true
-		if movement == 1:
-			anim.play(\"running\")
-		elif movement == 0:
-			anim.play(\"idle\")
-	if dir == \"up\":
-		anim.flip_h = true
-		if movement == 1:
-			anim.play(\"running\")
-		elif movement == 0:
-			anim.play(\"idle\")
+	
 	
 
 "
@@ -155,29 +128,29 @@ region = Rect2(112, 392, 56, 56)
 atlas = ExtResource("2_t5o5m")
 region = Rect2(168, 392, 56, 56)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0xmo4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0l6g"]
 atlas = ExtResource("2_t5o5m")
-region = Rect2(0, 0, 56, 61)
+region = Rect2(0, 0, 56, 56)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_07a3w"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8nuc"]
 atlas = ExtResource("2_t5o5m")
-region = Rect2(56, 0, 56, 61)
+region = Rect2(56, 0, 56, 56)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sl83w"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ro2rs"]
 atlas = ExtResource("2_t5o5m")
-region = Rect2(112, 0, 56, 61)
+region = Rect2(112, 0, 56, 56)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yg2lj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2i5ln"]
 atlas = ExtResource("2_t5o5m")
-region = Rect2(168, 0, 56, 61)
+region = Rect2(168, 0, 56, 56)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_toynm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_px0q8"]
 atlas = ExtResource("2_t5o5m")
-region = Rect2(224, 0, 56, 61)
+region = Rect2(224, 0, 56, 56)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jx4th"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4p1tp"]
 atlas = ExtResource("2_t5o5m")
-region = Rect2(280, 0, 56, 61)
+region = Rect2(280, 0, 56, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v1sc5"]
 atlas = ExtResource("2_t5o5m")
@@ -243,37 +216,37 @@ region = Rect2(336, 224, 56, 56)
 atlas = ExtResource("2_t5o5m")
 region = Rect2(392, 224, 56, 56)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s3ygb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0m2if"]
 atlas = ExtResource("2_t5o5m")
-region = Rect2(0, 122, 56, 61)
+region = Rect2(0, 112, 56, 56)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_is62u"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_avigs"]
 atlas = ExtResource("2_t5o5m")
-region = Rect2(56, 122, 56, 61)
+region = Rect2(56, 112, 56, 56)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_slksd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5f4lc"]
 atlas = ExtResource("2_t5o5m")
-region = Rect2(112, 122, 56, 61)
+region = Rect2(112, 112, 56, 56)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rm8k4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_r47ol"]
 atlas = ExtResource("2_t5o5m")
-region = Rect2(168, 122, 56, 61)
+region = Rect2(168, 112, 56, 56)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_34g02"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2komv"]
 atlas = ExtResource("2_t5o5m")
-region = Rect2(224, 122, 56, 61)
+region = Rect2(224, 112, 56, 56)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_axvwd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_aofwa"]
 atlas = ExtResource("2_t5o5m")
-region = Rect2(280, 122, 56, 61)
+region = Rect2(280, 112, 56, 56)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ef0r6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cd04b"]
 atlas = ExtResource("2_t5o5m")
-region = Rect2(336, 122, 56, 61)
+region = Rect2(336, 112, 56, 56)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hw0dp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bg3np"]
 atlas = ExtResource("2_t5o5m")
-region = Rect2(392, 122, 56, 61)
+region = Rect2(392, 112, 56, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jdaar"]
 atlas = ExtResource("2_t5o5m")
@@ -373,22 +346,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0xmo4")
+"texture": SubResource("AtlasTexture_b0l6g")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_07a3w")
+"texture": SubResource("AtlasTexture_x8nuc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sl83w")
+"texture": SubResource("AtlasTexture_ro2rs")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yg2lj")
+"texture": SubResource("AtlasTexture_2i5ln")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_toynm")
+"texture": SubResource("AtlasTexture_px0q8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jx4th")
+"texture": SubResource("AtlasTexture_4p1tp")
 }],
 "loop": true,
 "name": &"idle",
@@ -449,28 +422,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s3ygb")
+"texture": SubResource("AtlasTexture_0m2if")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_is62u")
+"texture": SubResource("AtlasTexture_avigs")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_slksd")
+"texture": SubResource("AtlasTexture_5f4lc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rm8k4")
+"texture": SubResource("AtlasTexture_r47ol")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_34g02")
+"texture": SubResource("AtlasTexture_2komv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_axvwd")
+"texture": SubResource("AtlasTexture_aofwa")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ef0r6")
+"texture": SubResource("AtlasTexture_cd04b")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hw0dp")
+"texture": SubResource("AtlasTexture_bg3np")
 }],
 "loop": true,
 "name": &"running",
@@ -499,13 +472,10 @@ script = SubResource("GDScript_ulw1k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(154, 102)
 sprite_frames = SubResource("SpriteFrames_8cb5n")
-animation = &"running"
-frame = 7
-frame_progress = 0.364239
+animation = &"idle"
+frame_progress = 0.979335
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-visible = false
-position = Vector2(153, 102)
+position = Vector2(0, 12)
 polygon = PackedVector2Array(-9, -1, -9, -3, -8, -3, -8, -4, -7, -4, -7, -5, -6, -5, -6, -8, -6, -12, -6, -14, -4, -14, -4, -16, 0, -16, 1, -16, 1, -15, 2, -15, 2, -14, 4, -14, 4, -13, 5, -12, 6, -11, 6, -10, 6, -9, 5, -8, 4, -8, 3, -8, 3, -6, 3, -5, 4, -4, 4, -3, 4, -2, 6, -2, 9, -2, 10, -1, 11, -1, 12, 1, 12, 6, 11, 8, 9, 8, 9, 9, 5, 9, 5, 13, 4, 13, 4, 15, 6, 15, 6, 17, 1, 17, 1, 11, -3, 11, -3, 13, -4, 13, -4, 15, -5, 15, -5, 17, -9, 17, -9, 14, -8, 14, -8, 12, -7, 12, -7, 9, -9, 9, -9, 8, -10, 8, -10, 0, -10, -1)
