@@ -1,13 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://dws4swtbmqput"]
+[gd_scene load_steps=9 format=3 uid="uid://dws4swtbmqput"]
 
 [ext_resource type="Script" path="res://scripts/pantalla_inici.gd" id="1_lnhfd"]
 [ext_resource type="PackedScene" uid="uid://cxm54vnitf3a6" path="res://escenes/tilemap.tscn" id="1_qxbpa"]
 [ext_resource type="Texture2D" uid="uid://dteaw5w3jht6r" path="res://NETHER/nether.jpg" id="2_dqmvm"]
 [ext_resource type="Texture2D" uid="uid://bxlkbk0bb27g1" path="res://imatges/imatges hub/Double/Border/panel-border-002.png" id="2_qfaco"]
 [ext_resource type="Script" path="res://scripts/Area2D.gd" id="5_enw11"]
+[ext_resource type="PackedScene" uid="uid://6qkbeev6mup0" path="res://escenes/character_body_2d.tscn" id="6_p4078"]
+[ext_resource type="PackedScene" uid="uid://bwwn0j7i525r8" path="res://escenes/faro.tscn" id="7_jcpfi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x4ybm"]
-size = Vector2(1784, 184)
+size = Vector2(1784, 41)
 
 [node name="PANTALLA INICI" type="Control"]
 layout_mode = 3
@@ -123,7 +125,51 @@ position = Vector2(64, 64)
 script = ExtResource("5_enw11")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(896, 96)
+position = Vector2(896, 24.5)
 shape = SubResource("RectangleShape2D_x4ybm")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("6_p4078")]
+position = Vector2(1037, 895)
+scale = Vector2(5, 5)
+
+[node name="faro" parent="." instance=ExtResource("7_jcpfi")]
+position = Vector2(736, 994)
+scale = Vector2(3, 3)
+
+[node name="faro2" parent="." instance=ExtResource("7_jcpfi")]
+position = Vector2(1248, 482)
+scale = Vector2(3, 3)
+
+[node name="faro3" parent="." instance=ExtResource("7_jcpfi")]
+position = Vector2(1248, 610)
+scale = Vector2(3, 3)
+
+[node name="faro4" parent="." instance=ExtResource("7_jcpfi")]
+position = Vector2(1248, 738)
+scale = Vector2(3, 3)
+
+[node name="faro5" parent="." instance=ExtResource("7_jcpfi")]
+position = Vector2(1248, 866)
+scale = Vector2(3, 3)
+
+[node name="faro6" parent="." instance=ExtResource("7_jcpfi")]
+position = Vector2(1248, 994)
+scale = Vector2(3, 3)
+
+[node name="faro7" parent="." instance=ExtResource("7_jcpfi")]
+position = Vector2(736, 738)
+scale = Vector2(3, 3)
+
+[node name="faro8" parent="." instance=ExtResource("7_jcpfi")]
+position = Vector2(736, 482)
+scale = Vector2(3, 3)
+
+[node name="faro9" parent="." instance=ExtResource("7_jcpfi")]
+position = Vector2(736, 610)
+scale = Vector2(3, 3)
+
+[node name="faro10" parent="." instance=ExtResource("7_jcpfi")]
+position = Vector2(736, 866)
+scale = Vector2(3, 3)
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
