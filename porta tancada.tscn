@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://calivr2c54yfj"]
+
+[ext_resource type="Texture2D" uid="uid://bhrvlyxvmpiad" path="res://imatges/0x72_16x16DungeonTileset.v5/0x72_16x16DungeonTileset.v5.png" id="1_h1lfk"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Porta oberta" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_h1lfk")
+region_enabled = true
+region_rect = Rect2(351.539, 15.7274, 64.8627, 32.0283)
