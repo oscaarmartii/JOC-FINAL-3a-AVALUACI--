@@ -14,3 +14,6 @@ position = Vector2(439, 598)
 [node name="Camera2D" type="Camera2D" parent="MAIN/CharacterBody2D"]
 position = Vector2(-2, -1)
 zoom = Vector2(6, 6)
+
+[node name="Bales" type="Node2D" parent="."]
+unique_name_in_owner = true

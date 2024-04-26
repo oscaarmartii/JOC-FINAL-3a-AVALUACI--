@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://pc3migbm5x5c"]
+[gd_scene load_steps=21 format=3 uid="uid://pc3migbm5x5c"]
 
 [ext_resource type="Texture2D" uid="uid://byrkrm0vly7nf" path="res://balas/Lasers/laserGreen02.png" id="1_hlm4j"]
 [ext_resource type="Script" path="res://escenes/bala.gd" id="1_ppv8a"]
@@ -54,7 +54,7 @@ animations = [{
 "texture": ExtResource("12_res3r")
 }],
 "loop": true,
-"name": &"default",
+"name": &"bala",
 "speed": 5.0
 }]
 
@@ -71,18 +71,55 @@ fill_to = Vector2(0.5, 0)
 radius = 6.00001
 height = 46.0
 
+[sub_resource type="Animation" id="Animation_5nacl"]
+resource_name = "bala"
+length = 5.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0.5, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 1.5, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 0.6, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5)
+}
+
+[sub_resource type="Animation" id="Animation_jagk1"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fu80c"]
+_data = {
+"RESET": SubResource("Animation_jagk1"),
+"bala": SubResource("Animation_5nacl")
+}
+
 [node name="balas" type="Area2D"]
 rotation = 4.71239
+scale = Vector2(0.3, 0.3)
 script = ExtResource("1_ppv8a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_tnqj7")
-frame_progress = 0.575405
+animation = &"bala"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(-6.75056e-06, -0.471959)
 scale = Vector2(0.233103, 0.808276)
-energy = 0.5
+energy = 0.0
 texture = SubResource("GradientTexture2D_r77ha")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -95,6 +132,11 @@ autostart = true
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-0.943871, -3.24249e-05)
 scale = Vector2(0.62245, 2.60459)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fu80c")
+}
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
