@@ -10,12 +10,10 @@ func _ready():
 func _process(delta):
 	pass
 	
-
-
-
+	
 	pass # Replace with function body.
 
 
 func _on_body_entered(body):
-	$"porta tancada1".visible = true
-	$"porta oberta1".visible = false
+	$"porta tancada2".visible = true
+	$"porta oberta2".visible = false
