@@ -196,4 +196,7 @@ position = Vector2(736, 546)
 [node name="faro20" parent="." instance=ExtResource("7_hex6t")]
 position = Vector2(736, 802)
 
+[node name="Bales" type="Node2D" parent="."]
+unique_name_in_owner = true
+
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
