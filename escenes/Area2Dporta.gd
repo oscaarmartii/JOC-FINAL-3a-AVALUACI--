@@ -19,3 +19,4 @@ func _process(delta):
 func _on_body_entered(body):
 	$"porta tancada1".visible = true
 	$"porta oberta1".visible = false
+	$"StaticBody2D/CollisionShape2D".set_deferred("disabled", false)
