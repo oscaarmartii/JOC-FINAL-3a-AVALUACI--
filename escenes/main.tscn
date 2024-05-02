@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://20a2gpuyin40"]
+[gd_scene load_steps=4 format=3 uid="uid://20a2gpuyin40"]
 
 [ext_resource type="PackedScene" uid="uid://bshnbrlqg0mgf" path="res://escenes/BACKGROUND.tscn" id="1_3su1i"]
 [ext_resource type="PackedScene" uid="uid://6qkbeev6mup0" path="res://escenes/character_body_2d.tscn" id="2_fsv4m"]
+[ext_resource type="PackedScene" uid="uid://ca0yp4kw5cmv" path="res://escenes/enemic_1.tscn" id="3_hguxr"]
 
 [node name="main" type="Node2D"]
 
@@ -18,3 +19,6 @@ zoom = Vector2(6, 6)
 [node name="Bales" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(6.10352e-05, 6.10352e-05)
+
+[node name="Node2D" parent="." instance=ExtResource("3_hguxr")]
+position = Vector2(585, 413)

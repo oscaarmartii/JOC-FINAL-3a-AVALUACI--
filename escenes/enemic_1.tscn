@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://ca0yp4kw5cmv"]
+[gd_scene load_steps=58 format=3 uid="uid://ca0yp4kw5cmv"]
 
 [ext_resource type="Texture2D" uid="uid://ck5s0tocoerjr" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Elite/Spritesheet/Elite Attack.png" id="1_1qhyk"]
 [ext_resource type="Script" path="res://scripts/enemic_1.gd" id="1_jj81h"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://b662usomeym6s" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Elite/Spritesheet/Elite Idle.png" id="4_45rca"]
 [ext_resource type="Texture2D" uid="uid://m1s0v0dhm5fj" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Elite/Spritesheet/Elite Jump.png" id="5_avvgs"]
 [ext_resource type="Texture2D" uid="uid://b8hwy5l4ut05j" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Elite/Spritesheet/Elite Run.png" id="6_1g1fp"]
-[ext_resource type="PackedScene" uid="uid://6qkbeev6mup0" path="res://escenes/character_body_2d.tscn" id="9_e2duw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bsw3n"]
 atlas = ExtResource("1_1qhyk")
@@ -374,12 +373,16 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v63tx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6m0da"]
-radius = 93.1343
+radius = 116.71
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+scale = Vector2(0.8, 0.8)
+collision_layer = 2
 script = ExtResource("1_jj81h")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 texture_filter = 1
 position = Vector2(1, -21)
 sprite_frames = SubResource("SpriteFrames_wgiig")
@@ -387,19 +390,15 @@ animation = &"attack"
 frame = 2
 frame_progress = 0.413112
 
-[node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(1, -13)
 shape = SubResource("CapsuleShape2D_v63tx")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+position = Vector2(1, -2)
 shape = SubResource("CircleShape2D_6m0da")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("9_e2duw")]
-position = Vector2(152, 61)
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_exited"]

@@ -1,20 +1,34 @@
 extends CharacterBody2D
 
-const speed = 100
-var player = false
+
+const speed = 30
 var zona = null
 
 func _physics_process(delta):
-	if player:
-		position += global_position.direction_to(zona.global_position) * speed
+	if zona:
+		var canvi = global_position.direction_to(zona.global_position) * speed * delta
+		print(canvi)
+		velocity = global_position.direction_to(zona.global_position) * speed
+		move_and_slide()
 	
 
 func _on_area_2d_body_entered(body):
 	zona = body
-	player = true
+
 	
-
-
 func _on_area_2d_body_exited(body):
 	zona = null
-	player = false
+	
+func play_anim():
+	var dir = zona
+	var anim = $AnimatedSprite2D
+	if velocity.length() > 0:
+		anim.play("running")
+	else:
+		anim.play("idle")
+			
+			
+	if velocity.x > 0:
+		anim.flip_h = false
+	if velocity.x < 0:
+		anim.flip_h = true

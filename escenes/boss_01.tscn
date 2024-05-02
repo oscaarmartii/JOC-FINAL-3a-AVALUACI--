@@ -458,21 +458,23 @@ height = 36.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_pyka5"]
 radius = 117.004
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Node2D" type="Node2D"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 texture_filter = 1
 position = Vector2(0, -21)
 sprite_frames = SubResource("SpriteFrames_7ge75")
 animation = &"attack_03"
 frame_progress = 0.606677
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, -15)
 shape = SubResource("CapsuleShape2D_sba7j")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
 position = Vector2(0, -15)
 shape = SubResource("CircleShape2D_pyka5")
