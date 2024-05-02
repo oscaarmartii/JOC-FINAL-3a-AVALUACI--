@@ -387,8 +387,8 @@ texture_filter = 1
 position = Vector2(1, -21)
 sprite_frames = SubResource("SpriteFrames_wgiig")
 animation = &"attack"
-frame = 2
-frame_progress = 0.413112
+frame = 7
+frame_progress = 0.0906689
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(1, -13)
