@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cqo3k2rxfne57"]
 
-[ext_resource type="Script" path="res://escenes/Area2D2.gd" id="1_y08dd"]
-[ext_resource type="PackedScene" uid="uid://bqw424r5nxw4d" path="res://porta oberta.tscn" id="2_a6yy3"]
-[ext_resource type="PackedScene" uid="uid://calivr2c54yfj" path="res://porta tancada.tscn" id="3_8l2p3"]
+[ext_resource type="Script" path="res://scripts/Area2D2.gd" id="1_y08dd"]
+[ext_resource type="PackedScene" uid="uid://bqw424r5nxw4d" path="res://escenes/porta oberta.tscn" id="2_a6yy3"]
+[ext_resource type="PackedScene" uid="uid://calivr2c54yfj" path="res://escenes/porta tancada.tscn" id="3_8l2p3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bd5u2"]
 size = Vector2(27.5, 3)

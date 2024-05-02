@@ -1,7 +1,7 @@
 [gd_scene load_steps=59 format=3 uid="uid://ca0yp4kw5cmv"]
 
 [ext_resource type="Texture2D" uid="uid://ck5s0tocoerjr" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Elite/Spritesheet/Elite Attack.png" id="1_1qhyk"]
-[ext_resource type="Script" path="res://escenes/enemic_1.gd" id="1_jj81h"]
+[ext_resource type="Script" path="res://scripts/enemic_1.gd" id="1_jj81h"]
 [ext_resource type="Texture2D" uid="uid://c0sdkashgwamj" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Elite/Spritesheet/Elite Death.png" id="2_3raxl"]
 [ext_resource type="Texture2D" uid="uid://bmi3sn7cc7e4c" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Elite/Spritesheet/Elite Hurt.png" id="3_p7cdu"]
 [ext_resource type="Texture2D" uid="uid://b662usomeym6s" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Elite/Spritesheet/Elite Idle.png" id="4_45rca"]
