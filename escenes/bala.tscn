@@ -125,10 +125,6 @@ texture = SubResource("GradientTexture2D_r77ha")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_drkak")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
-
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 show_behind_parent = true
 position = Vector2(-1.90735e-06, 1.81899e-12)
@@ -139,5 +135,4 @@ libraries = {
 "": SubResource("AnimationLibrary_fu80c")
 }
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
