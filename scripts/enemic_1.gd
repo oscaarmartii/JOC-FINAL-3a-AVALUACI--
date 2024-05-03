@@ -9,8 +9,10 @@ func _physics_process(delta):
 		var canvi = global_position.direction_to(zona.global_position) * speed * delta
 		print(canvi)
 		velocity = global_position.direction_to(zona.global_position) * speed
-		move_and_slide()
-		play_anim()
+	else:
+		velocity = Vector2.ZERO
+	move_and_slide()
+	play_anim()
 	
 
 func _on_area_2d_body_entered(body):
