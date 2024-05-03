@@ -8,6 +8,7 @@ script/source = "extends CharacterBody2D
 const speed = 100
 var current_dir = \"none\"
 var bales_disparades = 0
+var pots_disparar = true
 
 func _process(delta):
 	player_movement()
@@ -22,7 +23,7 @@ func player_movement():
 		velocity += Vector2.DOWN * speed
 	if Input.is_action_pressed(\"ui_up\"):
 		velocity += Vector2.UP * speed
-	if Input.is_action_just_pressed(\"clickesquerra\"):
+	if Input.is_action_just_pressed(\"clickesquerra\") and pots_disparar:
 		dispara()
 	
 	move_and_slide()
@@ -45,6 +46,7 @@ func play_anim():
 func dispara():
 	var escena_bala :PackedScene = preload(\"res://escenes/bala.tscn\")
 	var balas:Array = []
+	pots_disparar = false
 	for i in range (1):
 		balas.append(escena_bala.instantiate())
 		
@@ -54,6 +56,10 @@ func dispara():
 		var direccio = global_position.direction_to(get_global_mouse_position())
 		nova_bala.direccio = global_position.direction_to(get_global_mouse_position())
 		%Bales.add_child(nova_bala)
+
+func _on_timer_timeout():
+	pots_disparar = true
+	$Timer.start()
 
 "
 
@@ -506,3 +512,8 @@ polygon = PackedVector2Array(-9, -1, -9, -3, -8, -3, -8, -4, -7, -4, -7, -5, -6,
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(-5.68434e-14, 11.25)
 texture = SubResource("GradientTexture2D_vvwqj")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
