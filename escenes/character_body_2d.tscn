@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://6qkbeev6mup0"]
+[gd_scene load_steps=63 format=3 uid="uid://6qkbeev6mup0"]
 
 [ext_resource type="Texture2D" uid="uid://nwqlptqe4at5" path="res://imatges/char_red_1.png" id="1_sg3od"]
 
@@ -9,6 +9,7 @@ const speed = 100
 var current_dir = \"none\"
 var bales_disparades = 0
 var pots_disparar = true
+var atacant = false
 
 func _process(delta):
 	player_movement()
@@ -25,19 +26,23 @@ func player_movement():
 		velocity += Vector2.UP * speed
 	if Input.is_action_just_pressed(\"clickesquerra\") and pots_disparar:
 		dispara()
-	
+	if Input.is_action_pressed(\"clickdret\"):
+		atacant = true
+		
 	move_and_slide()
 	play_anim()
 	
 func play_anim():
 	var dir = current_dir
 	var anim = $AnimatedSprite2D
-	if velocity.length() > 0:
-		anim.play(\"running\")
+	if atacant:
+		anim.play(\"attack\")
 	else:
-		anim.play(\"idle\")
-			
-			
+		if velocity.length() > 0:
+			anim.play(\"running\")
+		else:
+			anim.play(\"idle\")
+
 	if velocity.x > 0:
 		anim.flip_h = false
 	if velocity.x < 0:
@@ -61,31 +66,44 @@ func _on_timer_timeout():
 	pots_disparar = true
 	$Timer.start()
 
+
+
+func _on_animated_sprite_2d_animation_finished():
+	if $AnimatedSprite2D.animation == \"attack\":
+		atacant = false
 "
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fss2u"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnbbq"]
 atlas = ExtResource("1_sg3od")
-region = Rect2(0, 61, 56, 61)
+region = Rect2(0, 56, 56, 56)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7pry0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4scu"]
 atlas = ExtResource("1_sg3od")
-region = Rect2(56, 61, 56, 61)
+region = Rect2(56, 56, 56, 56)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e0w5q"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbbms"]
 atlas = ExtResource("1_sg3od")
-region = Rect2(112, 61, 56, 61)
+region = Rect2(112, 56, 56, 56)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8sx38"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_psakn"]
 atlas = ExtResource("1_sg3od")
-region = Rect2(168, 61, 56, 61)
+region = Rect2(168, 56, 56, 56)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bwiwl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cp2nm"]
 atlas = ExtResource("1_sg3od")
-region = Rect2(224, 61, 56, 61)
+region = Rect2(224, 56, 56, 56)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8dcdd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubdb5"]
 atlas = ExtResource("1_sg3od")
-region = Rect2(280, 61, 56, 61)
+region = Rect2(280, 56, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1f2sj"]
+atlas = ExtResource("1_sg3od")
+region = Rect2(336, 56, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kn2v"]
+atlas = ExtResource("1_sg3od")
+region = Rect2(392, 56, 56, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0d8tv"]
 atlas = ExtResource("1_sg3od")
@@ -287,24 +305,30 @@ region = Rect2(168, 280, 56, 56)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fss2u")
+"texture": SubResource("AtlasTexture_dnbbq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7pry0")
+"texture": SubResource("AtlasTexture_q4scu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_e0w5q")
+"texture": SubResource("AtlasTexture_cbbms")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8sx38")
+"texture": SubResource("AtlasTexture_psakn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bwiwl")
+"texture": SubResource("AtlasTexture_cp2nm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8dcdd")
+"texture": SubResource("AtlasTexture_ubdb5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1f2sj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kn2v")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 17.0
 }, {
@@ -501,19 +525,24 @@ script = SubResource("GDScript_ulw1k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+position = Vector2(2.5, -16.25)
 sprite_frames = SubResource("SpriteFrames_8cb5n")
-animation = &"idle"
-frame_progress = 0.979335
+animation = &"attack"
+frame = 7
+frame_progress = 1.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(0, 12)
+visible = false
+position = Vector2(2.5, -13.75)
 polygon = PackedVector2Array(-9, -1, -9, -3, -8, -3, -8, -4, -7, -4, -7, -5, -6, -5, -6, -8, -6, -12, -6, -14, -4, -14, -4, -16, 0, -16, 1, -16, 1, -15, 2, -15, 2, -14, 4, -14, 4, -13, 5, -12, 6, -11, 6, -10, 6, -9, 5, -8, 4, -8, 3, -8, 3, -6, 3, -5, 4, -4, 4, -3, 4, -2, 6, -2, 9, -2, 10, -1, 11, -1, 12, 1, 12, 6, 11, 8, 9, 8, 9, 9, 5, 9, 5, 13, 4, 13, 4, 15, 6, 15, 6, 17, 1, 17, 1, 11, -3, 11, -3, 13, -4, 13, -4, 15, -5, 15, -5, 17, -9, 17, -9, 14, -8, 14, -8, 12, -7, 12, -7, 9, -9, 9, -9, 8, -10, 8, -10, 0, -10, -1)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(-5.68434e-14, 11.25)
+visible = false
+position = Vector2(-4.23516e-22, 16.25)
 texture = SubResource("GradientTexture2D_vvwqj")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -21,4 +21,4 @@ unique_name_in_owner = true
 position = Vector2(6.10352e-05, 6.10352e-05)
 
 [node name="Node2D" parent="." instance=ExtResource("3_hguxr")]
-position = Vector2(585, 413)
+position = Vector2(685, 450)
