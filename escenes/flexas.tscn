@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://cucbmfv2h5c2c"]
+
+[ext_resource type="Texture2D" uid="uid://vdnnhqjewuid" path="res://Keyboard Letters and Symbols.png" id="1_lilm2"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="adalt" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_lilm2")
+region_enabled = true
+region_rect = Rect2(1, 2, 13, 12)
+
+[node name="abaix" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 14)
+texture = ExtResource("1_lilm2")
+region_enabled = true
+region_rect = Rect2(17, 2, 13, 12)
+
+[node name="esquerra" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-15, 14)
+texture = ExtResource("1_lilm2")
+region_enabled = true
+region_rect = Rect2(33, 2, 13, 12)
+
+[node name="dreta" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(15, 14)
+texture = ExtResource("1_lilm2")
+region_enabled = true
+region_rect = Rect2(49, 2, 13, 12)
