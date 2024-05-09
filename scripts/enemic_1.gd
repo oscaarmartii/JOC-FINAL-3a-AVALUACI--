@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 const speed = 30
 var zona = null
+var atacant = false
+
 
 func _physics_process(delta):
 	if zona:
@@ -17,19 +19,26 @@ func _physics_process(delta):
 
 func _on_area_2d_body_entered(body):
 	zona = body
-
 	
 func _on_area_2d_body_exited(body):
 	zona = null
 	
 func play_anim():
 	var anim = $AnimatedSprite2D
-	if velocity.length() > 0:
-		anim.play("run")
-	else:
-		anim.play("idle")
+	if atacant:
+		anim.play("attack")
+		if velocity.length() > 0:
+			anim.play("run")
+		else:
+			anim.play("idle")
 		
 	if velocity.x > 0:
 		anim.flip_h = false
 	if velocity.x < 0:
 		anim.flip_h = true
+
+func _on_area_atac_body_entered(body):
+	zona = body
+
+func _on_area_atac_body_exited(body):
+	zona = null

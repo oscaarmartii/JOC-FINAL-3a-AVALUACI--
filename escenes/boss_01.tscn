@@ -460,21 +460,21 @@ radius = 117.004
 
 [node name="Node2D" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Boss" type="CharacterBody2D" parent="."]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Boss"]
 texture_filter = 1
 position = Vector2(0, -21)
 sprite_frames = SubResource("SpriteFrames_7ge75")
 animation = &"attack_03"
 frame_progress = 0.606677
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boss"]
 position = Vector2(0, -15)
 shape = SubResource("CapsuleShape2D_sba7j")
 
-[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+[node name="Area2D" type="Area2D" parent="Boss"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boss/Area2D"]
 position = Vector2(0, -15)
 shape = SubResource("CircleShape2D_pyka5")

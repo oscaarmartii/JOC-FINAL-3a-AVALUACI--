@@ -23,4 +23,4 @@ zoom = Vector2(6, 6)
 unique_name_in_owner = true
 
 [node name="Node2D" parent="." instance=ExtResource("3_hguxr")]
-position = Vector2(585, 413)
+position = Vector2(685, 450)
