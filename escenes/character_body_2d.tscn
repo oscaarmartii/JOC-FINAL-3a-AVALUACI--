@@ -521,6 +521,7 @@ fill_to = Vector2(0.5, 0)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 scale = Vector2(0.8, 0.8)
+collision_mask = 6
 script = SubResource("GDScript_ulw1k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

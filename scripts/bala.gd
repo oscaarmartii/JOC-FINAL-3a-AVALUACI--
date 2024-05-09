@@ -1,6 +1,6 @@
 extends Area2D
 
-var direccio =  global_position.direction_to(get_global_mouse_position())
+var direccio :=  Vector2.RIGHT
 var velocitat := 300
 
 
@@ -22,3 +22,7 @@ func _on_timer_timeout():
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
+
+
+func _on_body_entered(body):
+	body.mal()

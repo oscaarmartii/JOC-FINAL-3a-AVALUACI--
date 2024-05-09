@@ -381,25 +381,28 @@ radius = 50.0156
 [node name="Enemic" type="CharacterBody2D"]
 scale = Vector2(0.8, 0.8)
 collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_jj81h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(1, -21)
 sprite_frames = SubResource("SpriteFrames_wgiig")
-animation = &"idle"
+animation = &"death"
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -13)
 shape = SubResource("CapsuleShape2D_v63tx")
 
 [node name="Area_persecució" type="Area2D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_persecució"]
 position = Vector2(1, -2)
 shape = SubResource("CircleShape2D_6m0da")
 
 [node name="Area_atac" type="Area2D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_atac"]
 position = Vector2(0, -10)
