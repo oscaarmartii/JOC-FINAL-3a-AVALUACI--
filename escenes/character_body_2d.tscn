@@ -11,6 +11,9 @@ var bales_disparades = 0
 var pots_disparar = true
 var atacant = false
 
+func _ready():
+	Global.Jugador = self
+
 func _process(delta):
 	player_movement()
 

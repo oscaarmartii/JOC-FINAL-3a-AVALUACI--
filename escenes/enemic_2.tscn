@@ -1,5 +1,6 @@
-[gd_scene load_steps=58 format=3 uid="uid://c48vecqypntbn"]
+[gd_scene load_steps=60 format=3 uid="uid://c48vecqypntbn"]
 
+[ext_resource type="Script" path="res://escenes/Enemic2.gd" id="1_bcxid"]
 [ext_resource type="Texture2D" uid="uid://r32o2rq4r3q0" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Guard/Spritesheets/Guard Attack.png" id="1_hymxn"]
 [ext_resource type="Texture2D" uid="uid://dnm5mvitgp5hj" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Guard/Spritesheets/Guard Death.png" id="2_12klw"]
 [ext_resource type="Texture2D" uid="uid://kqdk326d3qxy" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Guard/Spritesheets/Guard Hurt.png" id="3_5cpbr"]
@@ -379,14 +380,16 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iujrh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y1r6a"]
-radius = 77.0584
+radius = 112.502
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_kyukc"]
+radius = 39.0712
 
-[node name="Enemic2" type="CharacterBody2D" parent="."]
+[node name="Enemic2" type="CharacterBody2D"]
 scale = Vector2(0.8, 0.8)
+script = ExtResource("1_bcxid")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemic2"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(-1, -22)
 sprite_frames = SubResource("SpriteFrames_xl518")
@@ -394,12 +397,28 @@ animation = &"idle"
 frame = 2
 frame_progress = 0.736669
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemic2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -13)
 shape = SubResource("CapsuleShape2D_iujrh")
 
-[node name="Area2D" type="Area2D" parent="Enemic2"]
+[node name="areapersecucio" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemic2/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areapersecucio"]
 position = Vector2(0, -13)
 shape = SubResource("CircleShape2D_y1r6a")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="areaatac" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areaatac"]
+position = Vector2(1.25, -10)
+shape = SubResource("CircleShape2D_kyukc")
+
+[connection signal="body_entered" from="areapersecucio" to="." method="_on_areapersecucio_body_entered"]
+[connection signal="body_exited" from="areapersecucio" to="." method="_on_areapersecucio_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="areaatac" to="." method="_on_areaatac_body_entered"]
+[connection signal="body_exited" from="areaatac" to="." method="_on_areaatac_body_exited"]
