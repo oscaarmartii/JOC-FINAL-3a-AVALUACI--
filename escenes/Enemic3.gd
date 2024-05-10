@@ -5,6 +5,7 @@ const speed = 30
 var zona = null
 var atacant = false
 var vides = 3
+var bales_disparades = 0
 
 func _physics_process(delta):
 	if atacant:
@@ -64,3 +65,19 @@ func _on_area_atacant_3_body_entered(body):
 func _on_area_atacant_3_body_exited(body):
 	atacant = false
 	print("Deixo d'atacar %s: %s" % [str(body),body.name])
+	
+	
+
+func dispara():
+	var escena_bala :PackedScene = preload("res://escenes/balas_enemics.tscn")
+	var balas:Array = []
+	for i in range (1):
+		balas.append(escena_bala.instantiate())
+		
+	for nova_bala in balas:
+		bales_disparades += 2
+		%balesenemic.add_child(nova_bala)
+		nova_bala.direccio = global_position.direction_to(Global.Jugador.global_position)
+		nova_bala.global_position = self.global_position
+func _on_timer_timeout():
+	dispara()
