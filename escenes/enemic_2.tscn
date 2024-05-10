@@ -386,6 +386,7 @@ radius = 112.502
 radius = 39.0712
 
 [node name="Enemic2" type="CharacterBody2D"]
+position = Vector2(518, 315)
 scale = Vector2(0.8, 0.8)
 script = ExtResource("1_bcxid")
 
@@ -408,7 +409,7 @@ position = Vector2(0, -13)
 shape = SubResource("CircleShape2D_y1r6a")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 2.0
 autostart = true
 
 [node name="areaatac" type="Area2D" parent="."]
@@ -416,6 +417,11 @@ autostart = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areaatac"]
 position = Vector2(1.25, -10)
 shape = SubResource("CircleShape2D_kyukc")
+
+[node name="balesenemic" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(2592.5, 1145)
+scale = Vector2(1, 1)
 
 [connection signal="body_entered" from="areapersecucio" to="." method="_on_areapersecucio_body_entered"]
 [connection signal="body_exited" from="areapersecucio" to="." method="_on_areapersecucio_body_exited"]

@@ -1,6 +1,6 @@
 extends Area2D
 
-var direccio =  global_position.direction_to(Global.Jugador.global_position)
+var direccio :=  Vector2.RIGHT
 var velocitat := 300
 
 

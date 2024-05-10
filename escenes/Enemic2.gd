@@ -50,11 +50,9 @@ func dispara():
 		balas.append(escena_bala.instantiate())
 		
 	for nova_bala in balas:
-		nova_bala.global_position = self.global_position
 		bales_disparades += 2
-		var direccio = global_position.direction_to(Global.Jugador.global_position)
-		nova_bala.direccio = global_position.direction_to(Global.Jugador.global_position)
 		%balesenemic.add_child(nova_bala)
-
+		nova_bala.direccio = global_position.direction_to(Global.Jugador.global_position)
+		nova_bala.global_position = self.global_position
 func _on_timer_timeout():
 	dispara()
