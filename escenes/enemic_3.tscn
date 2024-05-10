@@ -1,7 +1,8 @@
-[gd_scene load_steps=56 format=3 uid="uid://ct1lhxba4d844"]
+[gd_scene load_steps=58 format=3 uid="uid://ct1lhxba4d844"]
 
 [ext_resource type="Texture2D" uid="uid://j8v5tjqmrfhm" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Ratcher/Spritesheets/Ratcher Idle.png" id="1_dg52c"]
 [ext_resource type="Texture2D" uid="uid://j2bjk6mwel88" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Ratcher/Spritesheets/Ratcher Attack.png" id="1_i61md"]
+[ext_resource type="Script" path="res://escenes/Enemic3.gd" id="1_yc51r"]
 [ext_resource type="Texture2D" uid="uid://cgpigqas0jil5" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Ratcher/Spritesheets/Ratcher Death.png" id="2_fomq1"]
 [ext_resource type="Texture2D" uid="uid://co8hbmbm2h7af" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Ratcher/Spritesheets/Ratcher Hurt.png" id="3_vjkah"]
 [ext_resource type="Texture2D" uid="uid://b14nxphyan25y" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Ratcher/Spritesheets/Ratcher Jump.png" id="5_uq12r"]
@@ -367,24 +368,42 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_xjhbe"]
 radius = 82.1523
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_38ejk"]
+radius = 56.3749
 
-[node name="Enemic3" type="CharacterBody2D" parent="."]
+[node name="Enemic3" type="CharacterBody2D"]
 scale = Vector2(0.8, 0.8)
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_yc51r")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemic3"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -22)
 sprite_frames = SubResource("SpriteFrames_3nd1h")
 animation = &"run"
 frame_progress = 0.0946971
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemic3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -12)
 shape = SubResource("CapsuleShape2D_ub8tj")
 
-[node name="Area2D" type="Area2D" parent="Enemic3"]
+[node name="Area_perseguint3" type="Area2D" parent="."]
+collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemic3/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_perseguint3"]
 position = Vector2(0, -12)
 shape = SubResource("CircleShape2D_xjhbe")
+
+[node name="Area_atacant3" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_atacant3"]
+position = Vector2(0, -12.5)
+shape = SubResource("CircleShape2D_38ejk")
+
+[connection signal="body_entered" from="Area_perseguint3" to="." method="_on_area_perseguint_3_body_entered"]
+[connection signal="body_exited" from="Area_perseguint3" to="." method="_on_area_perseguint_3_body_exited"]
+[connection signal="body_entered" from="Area_atacant3" to="." method="_on_area_atacant_3_body_entered"]
+[connection signal="body_entered" from="Area_atacant3" to="." method="_on_area_2d_2_body_entered"]
+[connection signal="body_exited" from="Area_atacant3" to="." method="_on_area_2d_2_body_exited"]
+[connection signal="body_exited" from="Area_atacant3" to="." method="_on_area_atacant_3_body_exited"]

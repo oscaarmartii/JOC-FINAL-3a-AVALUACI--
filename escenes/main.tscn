@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://6qkbeev6mup0" path="res://escenes/character_body_2d.tscn" id="2_fsv4m"]
 [ext_resource type="PackedScene" uid="uid://ca0yp4kw5cmv" path="res://escenes/enemic_1.tscn" id="3_hguxr"]
 [ext_resource type="PackedScene" uid="uid://cbjlkjayyx7aw" path="res://escenes/ui.tscn" id="3_qq448"]
-[ext_resource type="PackedScene" uid="uid://c48vecqypntbn" path="res://escenes/enemic_2.tscn" id="4_qoess"]
+[ext_resource type="PackedScene" uid="uid://ct1lhxba4d844" path="res://escenes/enemic_3.tscn" id="5_7bl0p"]
 
 [node name="main" type="Node2D"]
 
@@ -26,9 +26,9 @@ unique_name_in_owner = true
 [node name="Node2D" parent="." instance=ExtResource("3_hguxr")]
 position = Vector2(685, 450)
 
-[node name="Node2D2" parent="." instance=ExtResource("4_qoess")]
-position = Vector2(547, 430)
-
 [node name="balesenemic" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(547, 430)
+
+[node name="Node2D3" parent="." instance=ExtResource("5_7bl0p")]
+position = Vector2(825, 377)

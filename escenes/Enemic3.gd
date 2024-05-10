@@ -9,6 +9,7 @@ var vides = 3
 func _physics_process(delta):
 	if atacant:
 		velocity = Vector2.ZERO
+		
 	elif zona:
 		velocity = global_position.direction_to(zona.global_position) * speed
 	else:
@@ -16,15 +17,6 @@ func _physics_process(delta):
 	move_and_slide()
 	play_anim()
 	
-
-func _on_area_2d_body_entered(body):
-	zona = body
-	print("Segueixo %s" % [body.name])
-
-	
-func _on_area_2d_body_exited(body):
-	zona = null
-	print("Deixo de seguir %s" % [body.name])
 	
 func play_anim():
 	var anim = $AnimatedSprite2D
@@ -47,11 +39,28 @@ func _on_area_atac_body_entered(body):
 	atacant = true
 	print("Ataco %s" % [body.name])
 
-func _on_area_atac_body_exited(body:PhysicsBody2D):
+func _on_area_atac_body_exited(body):
 	atacant = false
-	print("Deixo d'atacar %s: %s" % [str(body),body.name])
+	print("Deixo d'atacar %s" % [body.name])
 
 func mal():
 	print("Au!")
 	vides = vides -1
 
+func _on_area_perseguint_3_body_entered(body):
+	zona = body
+	print("Segueixo %s" % [body.name])
+	
+func _on_area_perseguint_3_body_exited(body):
+	zona = null
+	print("Deixo de seguir %s" % [body.name])
+
+
+
+func _on_area_atacant_3_body_entered(body):
+	atacant = true
+	print("Ataco %s" % [body.name])
+	
+func _on_area_atacant_3_body_exited(body):
+	atacant = false
+	print("Deixo d'atacar %s: %s" % [str(body),body.name])
