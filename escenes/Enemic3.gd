@@ -9,7 +9,6 @@ var vides = 3
 func _physics_process(delta):
 	if atacant:
 		velocity = Vector2.ZERO
-		
 	elif zona:
 		velocity = global_position.direction_to(zona.global_position) * speed
 	else:
