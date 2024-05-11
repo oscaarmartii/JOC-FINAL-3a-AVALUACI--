@@ -67,6 +67,7 @@ func _on_area_atacant_3_body_exited(body):
 	
 	
 
+
 func dispara():
 	var escena_bala :PackedScene = preload("res://escenes/balas_enemics.tscn")
 	var balas:Array = []
@@ -78,5 +79,6 @@ func dispara():
 		%balesenemic.add_child(nova_bala)
 		nova_bala.direccio = global_position.direction_to(Global.Jugador.global_position)
 		nova_bala.global_position = self.global_position
+
 func _on_timer_timeout():
-	dispara()
+	dispara() 

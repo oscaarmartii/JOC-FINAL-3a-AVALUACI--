@@ -407,8 +407,8 @@ autostart = true
 
 [connection signal="body_entered" from="Area_perseguint3" to="." method="_on_area_perseguint_3_body_entered"]
 [connection signal="body_exited" from="Area_perseguint3" to="." method="_on_area_perseguint_3_body_exited"]
-[connection signal="body_entered" from="Area_atacant3" to="." method="_on_area_2d_2_body_entered"]
 [connection signal="body_entered" from="Area_atacant3" to="." method="_on_area_atacant_3_body_entered"]
-[connection signal="body_exited" from="Area_atacant3" to="." method="_on_area_2d_2_body_exited"]
+[connection signal="body_entered" from="Area_atacant3" to="." method="_on_area_2d_2_body_entered"]
 [connection signal="body_exited" from="Area_atacant3" to="." method="_on_area_atacant_3_body_exited"]
+[connection signal="body_exited" from="Area_atacant3" to="." method="_on_area_2d_2_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
