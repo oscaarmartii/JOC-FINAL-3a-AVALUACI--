@@ -15,21 +15,20 @@ collision_layer = 4
 script = ExtResource("1_y08dd")
 
 [node name="porta oberta2" parent="." instance=ExtResource("2_a6yy3")]
-position = Vector2(432, 416)
+position = Vector2(0, 0)
 
 [node name="porta tancada2" parent="." instance=ExtResource("3_8l2p3")]
 visible = false
-position = Vector2(432, 416)
 
 [node name="colisioportas2" type="CollisionShape2D" parent="."]
-position = Vector2(432.25, 391)
+position = Vector2(0.25, -25)
 shape = SubResource("RectangleShape2D_bd5u2")
 
 [node name="StaticBody2D1" type="StaticBody2D" parent="."]
 collision_layer = 4
 
 [node name="CollisionShape2D1" type="CollisionShape2D" parent="StaticBody2D1"]
-position = Vector2(434.5, 414.5)
+position = Vector2(2.5, -1.5)
 shape = SubResource("RectangleShape2D_kkxhr")
 disabled = true
 
