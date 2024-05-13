@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://c48vecqypntbn"]
+[gd_scene load_steps=61 format=3 uid="uid://c48vecqypntbn"]
 
 [ext_resource type="Script" path="res://escenes/Enemic2.gd" id="1_bcxid"]
 [ext_resource type="Texture2D" uid="uid://r32o2rq4r3q0" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Guard/Spritesheets/Guard Attack.png" id="1_hymxn"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://ki11ri3an7ix" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Guard/Spritesheets/Guard Idle.png" id="4_faob6"]
 [ext_resource type="Texture2D" uid="uid://d77aihvtm61y" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Guard/Spritesheets/Guard Jump.png" id="5_woo1t"]
 [ext_resource type="Texture2D" uid="uid://bqyiona3o6d5v" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Guard/Spritesheets/Guard Run.png" id="6_ietcf"]
+[ext_resource type="Script" path="res://pau batsums tot nou/player/Area2D.gd" id="8_mbto3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iujrh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lwwfp"]
 atlas = ExtResource("1_hymxn")
@@ -377,8 +380,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iujrh"]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_y1r6a"]
 radius = 112.502
 
@@ -390,6 +391,11 @@ position = Vector2(-0.515747, 4.35315)
 scale = Vector2(0.8, 0.8)
 script = ExtResource("1_bcxid")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -13)
+scale = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_iujrh")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(-1, -22)
@@ -397,10 +403,6 @@ sprite_frames = SubResource("SpriteFrames_xl518")
 animation = &"idle"
 frame = 2
 frame_progress = 0.736669
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -13)
-shape = SubResource("CapsuleShape2D_iujrh")
 
 [node name="areapersecucio" type="Area2D" parent="."]
 
@@ -414,7 +416,16 @@ shape = SubResource("CircleShape2D_y1r6a")
 position = Vector2(2.5, -13.75)
 shape = SubResource("CircleShape2D_kyukc")
 
+[node name="Area2D" type="Area2D" parent="." groups=["enemies"]]
+script = ExtResource("8_mbto3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["enemies"]]
+position = Vector2(0, -13)
+scale = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_iujrh")
+
 [connection signal="body_entered" from="areapersecucio" to="." method="_on_areapersecucio_body_entered"]
 [connection signal="body_exited" from="areapersecucio" to="." method="_on_areapersecucio_body_exited"]
 [connection signal="body_entered" from="areaatac" to="." method="_on_areaatac_body_entered"]
 [connection signal="body_exited" from="areaatac" to="." method="_on_areaatac_body_exited"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

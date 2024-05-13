@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://20a2gpuyin40"]
+[gd_scene load_steps=9 format=3 uid="uid://20a2gpuyin40"]
 
 [ext_resource type="PackedScene" uid="uid://bshnbrlqg0mgf" path="res://escenes/BACKGROUND.tscn" id="1_3su1i"]
 [ext_resource type="PackedScene" uid="uid://6qkbeev6mup0" path="res://escenes/character_body_2d.tscn" id="2_fsv4m"]
@@ -6,33 +6,44 @@
 [ext_resource type="PackedScene" uid="uid://cbjlkjayyx7aw" path="res://escenes/ui.tscn" id="3_qq448"]
 [ext_resource type="PackedScene" uid="uid://c48vecqypntbn" path="res://escenes/enemic_2.tscn" id="4_qoess"]
 [ext_resource type="PackedScene" uid="uid://ct1lhxba4d844" path="res://escenes/enemic_3.tscn" id="5_7bl0p"]
+[ext_resource type="PackedScene" uid="uid://ckhbty3i21k3j" path="res://escenes/escena pau batsums estoy hasta la polla.tscn" id="7_cov38"]
+[ext_resource type="PackedScene" uid="uid://credp1m1vublk" path="res://escenes/cerdo_enemigo.tscn" id="8_8fbfs"]
 
 [node name="main" type="Node2D"]
 
 [node name="BACKGROUND" parent="." instance=ExtResource("1_3su1i")]
 position = Vector2(250, 118)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_fsv4m")]
-position = Vector2(689, 716)
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-position = Vector2(-2, -1)
-zoom = Vector2(6, 6)
-
-[node name="UI" parent="CharacterBody2D/Camera2D" instance=ExtResource("3_qq448")]
-
-[node name="Bales" type="Node2D" parent="."]
-unique_name_in_owner = true
-
-[node name="Node2D" parent="." instance=ExtResource("3_hguxr")]
-position = Vector2(685, 450)
-
 [node name="balesenemic" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(547, 430)
 
-[node name="Node2D3" parent="." instance=ExtResource("5_7bl0p")]
+[node name="Bales" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Node2D" parent="." groups=["enemies"] instance=ExtResource("3_hguxr")]
+position = Vector2(685, 450)
+
+[node name="Node2D3" parent="." groups=["enemies"] instance=ExtResource("5_7bl0p")]
 position = Vector2(825, 377)
 
-[node name="Enemic2" parent="." instance=ExtResource("4_qoess")]
+[node name="Enemic2" parent="." groups=["enemies"] instance=ExtResource("4_qoess")]
 position = Vector2(552.484, 397.353)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_fsv4m")]
+position = Vector2(689, 716)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(-1.52588e-05, 1.25003)
+scale = Vector2(1, 1)
+zoom = Vector2(6, 6)
+
+[node name="UI" parent="CharacterBody2D" instance=ExtResource("3_qq448")]
+
+[node name="main" parent="." instance=ExtResource("7_cov38")]
+visible = false
+position = Vector2(684, 725)
+
+[node name="cerdo enemigo" parent="." instance=ExtResource("8_8fbfs")]
+visible = false
+position = Vector2(594, 489)
