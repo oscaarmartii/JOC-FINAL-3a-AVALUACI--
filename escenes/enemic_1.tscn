@@ -401,7 +401,7 @@ collision_layer = 2
 position = Vector2(1, -2)
 shape = SubResource("CircleShape2D_6m0da")
 
-[node name="Area_atac" type="Area2D" parent="."]
+[node name="Area_atac" type="Area2D" parent="." groups=["hit"]]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_atac"]

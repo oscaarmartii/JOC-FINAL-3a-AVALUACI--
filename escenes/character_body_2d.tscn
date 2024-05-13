@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://6qkbeev6mup0"]
+[gd_scene load_steps=65 format=3 uid="uid://6qkbeev6mup0"]
 
 [ext_resource type="Texture2D" uid="uid://nwqlptqe4at5" path="res://imatges/char_red_1.png" id="1_sg3od"]
 
@@ -10,11 +10,17 @@ var current_dir = \"none\"
 var bales_disparades = 0
 var pots_disparar = true
 var atacant = false
+var vides = 3
 
 func _ready():
 	Global.Jugador = self
 
 func _process(delta):
+	if Input.is_action_pressed(\"clickdret\"):
+		$Area2D/CollisionShape2D.disabled = false
+	else:
+		$Area2D/CollisionShape2D.disabled = true
+		
 	player_movement()
 
 func player_movement():
@@ -70,10 +76,15 @@ func _on_timer_timeout():
 	$Timer.start()
 
 
-
 func _on_animated_sprite_2d_animation_finished():
 	if $AnimatedSprite2D.animation == \"attack\":
 		atacant = false
+
+
+func _on_area_2d_body_entered(body):
+	if body.is_in_group(\"hit\"):
+		body.take_damage
+	pass # Replace with function body.
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dnbbq"]
@@ -524,6 +535,9 @@ fill_to = Vector2(0.5, 0)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gln5m"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_al5yd"]
+size = Vector2(20, 13.75)
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 scale = Vector2(0.8, 0.8)
 collision_mask = 6
@@ -549,5 +563,13 @@ autostart = true
 position = Vector2(1.25, -3.75)
 shape = SubResource("CapsuleShape2D_gln5m")
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(21.25, -3.75)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_al5yd")
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
