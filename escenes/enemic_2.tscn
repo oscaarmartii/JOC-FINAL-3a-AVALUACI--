@@ -386,14 +386,13 @@ radius = 112.502
 [sub_resource type="CircleShape2D" id="CircleShape2D_kyukc"]
 radius = 39.0712
 
-[node name="Enemic2" type="CharacterBody2D"]
+[node name="Enemic2" type="CharacterBody2D" groups=["enemies"]]
 position = Vector2(-0.515747, 4.35315)
 scale = Vector2(0.8, 0.8)
 script = ExtResource("1_bcxid")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -13)
-scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_iujrh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -421,7 +420,6 @@ script = ExtResource("8_mbto3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["enemies"]]
 position = Vector2(0, -13)
-scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_iujrh")
 
 [connection signal="body_entered" from="areapersecucio" to="." method="_on_areapersecucio_body_entered"]

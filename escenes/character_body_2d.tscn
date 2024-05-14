@@ -567,6 +567,7 @@ position = Vector2(1.25, -3.75)
 shape = SubResource("CapsuleShape2D_gln5m")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(21.25, -3.75)

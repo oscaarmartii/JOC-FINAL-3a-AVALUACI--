@@ -379,7 +379,7 @@ radius = 116.71
 [sub_resource type="CircleShape2D" id="CircleShape2D_0m8gd"]
 radius = 50.0156
 
-[node name="Enemic" type="CharacterBody2D"]
+[node name="Enemic" type="CharacterBody2D" groups=["enemies"]]
 scale = Vector2(0.8, 0.8)
 collision_layer = 2
 collision_mask = 3
@@ -387,7 +387,6 @@ script = ExtResource("1_jj81h")
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -13)
-scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_v63tx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -415,7 +414,6 @@ script = ExtResource("8_uqrq3")
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="mort" groups=["enemies"]]
 position = Vector2(1, -13)
-scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_v63tx")
 
 [connection signal="body_entered" from="Area_persecució" to="." method="_on_area_2d_body_entered"]

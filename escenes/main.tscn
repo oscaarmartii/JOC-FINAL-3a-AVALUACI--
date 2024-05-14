@@ -21,13 +21,13 @@ position = Vector2(547, 430)
 [node name="Bales" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="Node2D" parent="." groups=["enemies"] instance=ExtResource("3_hguxr")]
+[node name="Node2D" parent="." instance=ExtResource("3_hguxr")]
 position = Vector2(685, 450)
 
-[node name="Node2D3" parent="." groups=["enemies"] instance=ExtResource("5_7bl0p")]
+[node name="Node2D3" parent="." instance=ExtResource("5_7bl0p")]
 position = Vector2(825, 377)
 
-[node name="Enemic2" parent="." groups=["enemies"] instance=ExtResource("4_qoess")]
+[node name="Enemic2" parent="." instance=ExtResource("4_qoess")]
 position = Vector2(552.484, 397.353)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_fsv4m")]
@@ -35,7 +35,6 @@ position = Vector2(689, 716)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(-1.52588e-05, 1.25003)
-scale = Vector2(1, 1)
 zoom = Vector2(6, 6)
 
 [node name="UI" parent="CharacterBody2D" instance=ExtResource("3_qq448")]
