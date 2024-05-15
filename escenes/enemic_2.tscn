@@ -389,13 +389,15 @@ radius = 39.0712
 [node name="Enemic2" type="CharacterBody2D" groups=["enemies"]]
 position = Vector2(-0.515747, 4.35315)
 scale = Vector2(0.8, 0.8)
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_bcxid")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemies"]]
 position = Vector2(0, -13)
 shape = SubResource("CapsuleShape2D_iujrh")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["enemies"]]
 texture_filter = 1
 position = Vector2(-1, -22)
 sprite_frames = SubResource("SpriteFrames_xl518")
@@ -403,15 +405,15 @@ animation = &"idle"
 frame = 2
 frame_progress = 0.736669
 
-[node name="areapersecucio" type="Area2D" parent="."]
+[node name="areapersecucio" type="Area2D" parent="." groups=["enemies"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="areapersecucio"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areapersecucio" groups=["enemies"]]
 position = Vector2(0, -13)
 shape = SubResource("CircleShape2D_y1r6a")
 
-[node name="areaatac" type="Area2D" parent="."]
+[node name="areaatac" type="Area2D" parent="." groups=["enemies"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="areaatac"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areaatac" groups=["enemies"]]
 position = Vector2(2.5, -13.75)
 shape = SubResource("CircleShape2D_kyukc")
 
