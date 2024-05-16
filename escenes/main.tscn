@@ -24,11 +24,44 @@ unique_name_in_owner = true
 [node name="Node2D" parent="." instance=ExtResource("3_hguxr")]
 position = Vector2(685, 450)
 
+[node name="Node2D10" parent="." instance=ExtResource("3_hguxr")]
+position = Vector2(355, 67)
+
+[node name="Node2D6" parent="." instance=ExtResource("3_hguxr")]
+position = Vector2(-105, 44)
+
+[node name="Node2D2" parent="." instance=ExtResource("3_hguxr")]
+position = Vector2(724, 344)
+
+[node name="Node2D8" parent="." instance=ExtResource("3_hguxr")]
+position = Vector2(11.0001, -46)
+
+[node name="Node2D12" parent="." instance=ExtResource("3_hguxr")]
+position = Vector2(689, 109)
+
+[node name="Node2D9" parent="." instance=ExtResource("3_hguxr")]
+position = Vector2(132, 53)
+
 [node name="Node2D3" parent="." instance=ExtResource("5_7bl0p")]
 position = Vector2(825, 377)
 
+[node name="Node2D7" parent="." instance=ExtResource("5_7bl0p")]
+position = Vector2(-153, -72)
+
+[node name="Node2D4" parent="." instance=ExtResource("5_7bl0p")]
+position = Vector2(855, 480)
+
+[node name="Node2D5" parent="." instance=ExtResource("5_7bl0p")]
+position = Vector2(-152, 197)
+
+[node name="Node2D11" parent="." instance=ExtResource("5_7bl0p")]
+position = Vector2(541, 54)
+
 [node name="Enemic2" parent="." instance=ExtResource("4_qoess")]
 position = Vector2(552.484, 397.353)
+
+[node name="Enemic3" parent="." instance=ExtResource("4_qoess")]
+position = Vector2(-15.9999, 155)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_fsv4m")]
 position = Vector2(689, 716)
