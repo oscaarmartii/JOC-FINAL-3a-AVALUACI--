@@ -8,4 +8,4 @@
 texture_filter = 1
 texture = ExtResource("1_h1lfk")
 region_enabled = true
-region_rect = Rect2(351.539, 15.7274, 64.8627, 32.0283)
+region_rect = Rect2(368, 15.7274, 32, 32.0283)

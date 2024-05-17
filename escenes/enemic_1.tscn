@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://ca0yp4kw5cmv"]
+[gd_scene load_steps=60 format=3 uid="uid://ca0yp4kw5cmv"]
 
 [ext_resource type="Texture2D" uid="uid://ck5s0tocoerjr" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Elite/Spritesheet/Elite Attack.png" id="1_1qhyk"]
 [ext_resource type="Script" path="res://scripts/enemic_1.gd" id="1_jj81h"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://b662usomeym6s" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Elite/Spritesheet/Elite Idle.png" id="4_45rca"]
 [ext_resource type="Texture2D" uid="uid://m1s0v0dhm5fj" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Elite/Spritesheet/Elite Jump.png" id="5_avvgs"]
 [ext_resource type="Texture2D" uid="uid://b8hwy5l4ut05j" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Elite/Spritesheet/Elite Run.png" id="6_1g1fp"]
+[ext_resource type="Script" path="res://pau batsums tot nou/player/mort.gd" id="8_uqrq3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v63tx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bsw3n"]
 atlas = ExtResource("1_1qhyk")
@@ -370,29 +373,27 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v63tx"]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_6m0da"]
 radius = 116.71
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0m8gd"]
 radius = 50.0156
 
-[node name="Enemic" type="CharacterBody2D"]
+[node name="Enemic" type="CharacterBody2D" groups=["enemies"]]
 scale = Vector2(0.8, 0.8)
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_jj81h")
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -13)
+shape = SubResource("CapsuleShape2D_v63tx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(1, -21)
 sprite_frames = SubResource("SpriteFrames_wgiig")
 animation = &"death"
-
-[node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -13)
-shape = SubResource("CapsuleShape2D_v63tx")
 
 [node name="Area_persecució" type="Area2D" parent="."]
 collision_layer = 2
@@ -401,14 +402,22 @@ collision_layer = 2
 position = Vector2(1, -2)
 shape = SubResource("CircleShape2D_6m0da")
 
-[node name="Area_atac" type="Area2D" parent="." groups=["hit"]]
+[node name="Area_atac" type="Area2D" parent="." groups=["enemies", "hit"]]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_atac"]
 position = Vector2(0, -10)
 shape = SubResource("CircleShape2D_0m8gd")
 
+[node name="mort" type="Area2D" parent="." groups=["enemies"]]
+script = ExtResource("8_uqrq3")
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="mort" groups=["enemies"]]
+position = Vector2(1, -13)
+shape = SubResource("CapsuleShape2D_v63tx")
+
 [connection signal="body_entered" from="Area_persecució" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area_persecució" to="." method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="Area_atac" to="." method="_on_area_atac_body_entered"]
 [connection signal="body_exited" from="Area_atac" to="." method="_on_area_atac_body_exited"]
+[connection signal="body_entered" from="mort" to="mort" method="_on_body_entered"]

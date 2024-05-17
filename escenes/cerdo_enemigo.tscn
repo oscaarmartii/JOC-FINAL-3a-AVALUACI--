@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://credp1m1vublk"]
+
+[ext_resource type="Script" path="res://pau batsums tot nou/player/cerdoooo.gd" id="1_d61tc"]
+[ext_resource type="Texture2D" uid="uid://cvwtocdebcyrj" path="res://pau batsums tot nou/Sprites/03-Pig/Run (34x28).png" id="1_wyt4q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5h0oj"]
+atlas = ExtResource("1_wyt4q")
+region = Rect2(0, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcpgi"]
+atlas = ExtResource("1_wyt4q")
+region = Rect2(34, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88upf"]
+atlas = ExtResource("1_wyt4q")
+region = Rect2(68, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_joc1c"]
+atlas = ExtResource("1_wyt4q")
+region = Rect2(102, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rjn2"]
+atlas = ExtResource("1_wyt4q")
+region = Rect2(136, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfkre"]
+atlas = ExtResource("1_wyt4q")
+region = Rect2(170, 0, 34, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7yce5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5h0oj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcpgi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88upf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joc1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rjn2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sfkre")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4af76"]
+height = 22.0
+
+[node name="cerdo enemigo" type="Node2D"]
+
+[node name="pig_enemie" type="CharacterBody2D" parent="."]
+script = ExtResource("1_d61tc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="pig_enemie"]
+sprite_frames = SubResource("SpriteFrames_7yce5")
+animation = &"run"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="pig_enemie"]
+position = Vector2(3, 4)
+shape = SubResource("CapsuleShape2D_4af76")
+
+[node name="Area2D" type="Area2D" parent="pig_enemie"]
+position = Vector2(3, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pig_enemie/Area2D"]
+shape = SubResource("CapsuleShape2D_4af76")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://ct1lhxba4d844"]
+[gd_scene load_steps=59 format=3 uid="uid://ct1lhxba4d844"]
 
 [ext_resource type="Texture2D" uid="uid://j8v5tjqmrfhm" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Ratcher/Spritesheets/Ratcher Idle.png" id="1_dg52c"]
 [ext_resource type="Texture2D" uid="uid://j2bjk6mwel88" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Ratcher/Spritesheets/Ratcher Attack.png" id="1_i61md"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://co8hbmbm2h7af" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Ratcher/Spritesheets/Ratcher Hurt.png" id="3_vjkah"]
 [ext_resource type="Texture2D" uid="uid://b14nxphyan25y" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Ratcher/Spritesheets/Ratcher Jump.png" id="5_uq12r"]
 [ext_resource type="Texture2D" uid="uid://bv27sxy7ctv6n" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Ratcher/Spritesheets/Ratcher Run.png" id="6_4m6q1"]
+[ext_resource type="Script" path="res://pau batsums tot nou/player/Area2D.gd" id="8_ufevc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ub8tj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bb5gh"]
 atlas = ExtResource("1_i61md")
@@ -363,19 +366,21 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ub8tj"]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_xjhbe"]
 radius = 82.1523
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_38ejk"]
 radius = 56.3749
 
-[node name="Enemic3" type="CharacterBody2D"]
+[node name="Enemic3" type="CharacterBody2D" groups=["enemies"]]
 scale = Vector2(0.8, 0.8)
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_yc51r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -12)
+shape = SubResource("CapsuleShape2D_ub8tj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -383,10 +388,6 @@ position = Vector2(0, -22)
 sprite_frames = SubResource("SpriteFrames_3nd1h")
 animation = &"run"
 frame_progress = 0.0946971
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -12)
-shape = SubResource("CapsuleShape2D_ub8tj")
 
 [node name="Area_perseguint3" type="Area2D" parent="."]
 collision_layer = 2
@@ -405,10 +406,18 @@ shape = SubResource("CircleShape2D_38ejk")
 wait_time = 3.0
 autostart = true
 
+[node name="Area2D" type="Area2D" parent="." groups=["enemies"]]
+script = ExtResource("8_ufevc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["enemies"]]
+position = Vector2(0, -12)
+shape = SubResource("CapsuleShape2D_ub8tj")
+
 [connection signal="body_entered" from="Area_perseguint3" to="." method="_on_area_perseguint_3_body_entered"]
 [connection signal="body_exited" from="Area_perseguint3" to="." method="_on_area_perseguint_3_body_exited"]
-[connection signal="body_entered" from="Area_atacant3" to="." method="_on_area_atacant_3_body_entered"]
 [connection signal="body_entered" from="Area_atacant3" to="." method="_on_area_2d_2_body_entered"]
-[connection signal="body_exited" from="Area_atacant3" to="." method="_on_area_atacant_3_body_exited"]
+[connection signal="body_entered" from="Area_atacant3" to="." method="_on_area_atacant_3_body_entered"]
 [connection signal="body_exited" from="Area_atacant3" to="." method="_on_area_2d_2_body_exited"]
+[connection signal="body_exited" from="Area_atacant3" to="." method="_on_area_atacant_3_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
