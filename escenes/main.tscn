@@ -65,7 +65,7 @@ position = Vector2(552.484, 397.353)
 position = Vector2(-15.9999, 155)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_fsv4m")]
-position = Vector2(101, -370)
+position = Vector2(679, 732)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(-1.52588e-05, 1.25003)
