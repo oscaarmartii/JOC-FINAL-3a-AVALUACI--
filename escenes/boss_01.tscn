@@ -462,36 +462,38 @@ radius = 135.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_b1wdj"]
 radius = 42.2966
 
-[node name="Boss" type="CharacterBody2D"]
+[node name="Boss" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_3cosm")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["enemies"]]
 texture_filter = 1
 position = Vector2(0, -21)
 sprite_frames = SubResource("SpriteFrames_7ge75")
 animation = &"attack_01"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemies"]]
 position = Vector2(0, -15)
 shape = SubResource("CapsuleShape2D_sba7j")
 
-[node name="Area_persecucio_boss" type="Area2D" parent="."]
+[node name="Area_persecucio_boss" type="Area2D" parent="." groups=["enemies"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_persecucio_boss"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_persecucio_boss" groups=["enemies"]]
 position = Vector2(0, -15)
 shape = SubResource("CircleShape2D_pyka5")
 
-[node name="Area_atac_boss" type="Area2D" parent="."]
+[node name="Area_atac_boss" type="Area2D" parent="." groups=["enemies"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_atac_boss"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_atac_boss" groups=["enemies"]]
 position = Vector2(0, -14)
 shape = SubResource("CircleShape2D_b1wdj")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+[node name="Timer" type="Timer" parent="." groups=["enemies"]]
 autostart = true
 
 [connection signal="body_entered" from="Area_persecucio_boss" to="." method="_on_area_persecucio_boss_body_entered"]
 [connection signal="body_exited" from="Area_persecucio_boss" to="." method="_on_area_persecucio_boss_body_exited"]
 [connection signal="body_entered" from="Area_atac_boss" to="." method="_on_area_atac_boss_body_entered"]
 [connection signal="body_exited" from="Area_atac_boss" to="." method="_on_area_atac_boss_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
