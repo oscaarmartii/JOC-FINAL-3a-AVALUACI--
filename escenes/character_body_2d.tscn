@@ -541,7 +541,7 @@ fill_to = Vector2(0.5, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_al5yd"]
 size = Vector2(20, 13.75)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["character"]]
 scale = Vector2(0.8, 0.8)
 collision_mask = 6
 script = SubResource("GDScript_ulw1k")

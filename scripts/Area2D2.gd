@@ -15,6 +15,9 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	$"porta tancada2".visible = true
-	$"porta oberta2".visible = false
-	$"StaticBody2D1/CollisionShape2D1".set_deferred("disabled", false)
+	if body.is_in_group("character"):
+		$"porta tancada2".visible = true
+		$"porta oberta2".visible = false
+		$"StaticBody2D1/CollisionShape2D1".set_deferred("disabled", false)
+	else:
+		pass
