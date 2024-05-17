@@ -1,5 +1,6 @@
-[gd_scene load_steps=69 format=3 uid="uid://b60mxgisbhk27"]
+[gd_scene load_steps=71 format=3 uid="uid://b60mxgisbhk27"]
 
+[ext_resource type="Script" path="res://escenes/Boss.gd" id="1_3cosm"]
 [ext_resource type="Texture2D" uid="uid://crmt48a3di6vn" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Boss/Spritesheets/Boss Attack 01.png" id="1_l3cyt"]
 [ext_resource type="Texture2D" uid="uid://drxe853mrspis" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Boss/Spritesheets/Boss Attack 02.png" id="2_yv0fk"]
 [ext_resource type="Texture2D" uid="uid://b25d6y6j5w4gn" path="res://Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Foozle_2DC0023_Critters_EnemyPack1_Pixel_Art/Boss/Spritesheets/Boss Attack 03.png" id="3_lr0f5"]
@@ -258,9 +259,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vy4pp")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_01",
-"speed": 4.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -456,25 +457,41 @@ radius = 14.0
 height = 36.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pyka5"]
-radius = 117.004
+radius = 135.0
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_b1wdj"]
+radius = 42.2966
 
-[node name="Boss" type="CharacterBody2D" parent="."]
+[node name="Boss" type="CharacterBody2D"]
+script = ExtResource("1_3cosm")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Boss"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -21)
 sprite_frames = SubResource("SpriteFrames_7ge75")
-animation = &"attack_03"
-frame_progress = 0.606677
+animation = &"attack_01"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boss"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -15)
 shape = SubResource("CapsuleShape2D_sba7j")
 
-[node name="Area2D" type="Area2D" parent="Boss"]
+[node name="Area_persecucio_boss" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boss/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_persecucio_boss"]
 position = Vector2(0, -15)
 shape = SubResource("CircleShape2D_pyka5")
+
+[node name="Area_atac_boss" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_atac_boss"]
+position = Vector2(0, -14)
+shape = SubResource("CircleShape2D_b1wdj")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="body_entered" from="Area_persecucio_boss" to="." method="_on_area_persecucio_boss_body_entered"]
+[connection signal="body_exited" from="Area_persecucio_boss" to="." method="_on_area_persecucio_boss_body_exited"]
+[connection signal="body_entered" from="Area_atac_boss" to="." method="_on_area_atac_boss_body_entered"]
+[connection signal="body_exited" from="Area_atac_boss" to="." method="_on_area_atac_boss_body_exited"]

@@ -553,7 +553,7 @@ sprite_frames = SubResource("SpriteFrames_8cb5n")
 animation = &"idle"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(-4.23516e-22, 16.25)
+position = Vector2(-2.52435e-29, 1.90735e-06)
 texture = SubResource("GradientTexture2D_vvwqj")
 
 [node name="Timer" type="Timer" parent="."]
