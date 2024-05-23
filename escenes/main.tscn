@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://20a2gpuyin40"]
+[gd_scene load_steps=9 format=3 uid="uid://20a2gpuyin40"]
 
 [ext_resource type="PackedScene" uid="uid://bshnbrlqg0mgf" path="res://escenes/BACKGROUND.tscn" id="1_3su1i"]
 [ext_resource type="PackedScene" uid="uid://6qkbeev6mup0" path="res://escenes/character_body_2d.tscn" id="2_fsv4m"]
 [ext_resource type="PackedScene" uid="uid://ca0yp4kw5cmv" path="res://escenes/enemic_1.tscn" id="3_hguxr"]
-[ext_resource type="PackedScene" uid="uid://cbjlkjayyx7aw" path="res://escenes/ui.tscn" id="3_qq448"]
 [ext_resource type="PackedScene" uid="uid://c48vecqypntbn" path="res://escenes/enemic_2.tscn" id="4_qoess"]
 [ext_resource type="PackedScene" uid="uid://ct1lhxba4d844" path="res://escenes/enemic_3.tscn" id="5_7bl0p"]
 [ext_resource type="PackedScene" uid="uid://ckhbty3i21k3j" path="res://escenes/escena pau batsums estoy hasta la polla.tscn" id="7_cov38"]
@@ -70,8 +69,6 @@ position = Vector2(679, 732)
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(-1.52588e-05, 1.25003)
 zoom = Vector2(6, 6)
-
-[node name="UI" parent="CharacterBody2D" instance=ExtResource("3_qq448")]
 
 [node name="main" parent="." instance=ExtResource("7_cov38")]
 visible = false

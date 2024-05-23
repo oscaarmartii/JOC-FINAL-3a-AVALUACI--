@@ -10,7 +10,6 @@ var current_dir = \"none\"
 var bales_disparades = 0
 var pots_disparar = true
 var atacant = false
-var vides = 3
 
 func _ready():
 	Global.Jugador = self
@@ -20,6 +19,8 @@ func _process(delta):
 		$Area2D/CollisionShape2D.disabled = false
 	else:
 		$Area2D/CollisionShape2D.disabled = true
+	if Global.vidas <= 0:
+		get_tree().change_scene_to_file(\"res://escenes/gameover.tscn\")
 		
 	player_movement()
 
@@ -86,6 +87,7 @@ func _on_animated_sprite_2d_animation_finished():
 func _on_area_2d_body_entered(body):
 	if body.is_in_group(\"enemies\"):
 		body.queue_free()
+	
 		#body.take_damage
 	
 "
@@ -572,4 +574,5 @@ shape = SubResource("RectangleShape2D_al5yd")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="child_entered_tree" from="CollisionShape2D" to="." method="_on_collision_shape_2d_child_entered_tree"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
