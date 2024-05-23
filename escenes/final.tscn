@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://cjcl5ilcahwi6"]
+[gd_scene load_steps=2 format=3 uid="uid://cjcl5ilcahwi6"]
+
+[ext_resource type="Texture2D" uid="uid://csh0ydvudnpcw" path="res://imatges/New Levels Unlocked.png" id="1_lrfds"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="NewLevelsUnlocked" type="Sprite2D" parent="."]
+position = Vector2(573, 570)
+scale = Vector2(1.07755, 1.07755)
+texture = ExtResource("1_lrfds")
